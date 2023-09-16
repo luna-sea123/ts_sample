@@ -1,4 +1,4 @@
-<script setup="ts">
+<script setup lang="ts">
   const itemName1 = "desk";
   const itemName2 = "bike";
 
@@ -11,12 +11,12 @@
 
 <template>
   <div class="cotainer">
+    <a v-bind:href="URL">test</a>
     <h1>Payment</h1>
     <div class="payment">
       <label>{{ itemName1 }}</label>
       <label>{{ itemName2 }}</label>
-      <a v-bind:href="URL">test</a>
-      <button v-on:click="buy(itemName1)">BUY</button>
+      <button v-on:click="buy('test')">Buy</button>
     </div>
   </div>
 </template>
@@ -31,6 +31,7 @@
   .payment {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 80px;
     width: 400px;
     margin-bottom: 8px;
