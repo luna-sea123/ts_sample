@@ -1,6 +1,14 @@
 <script setup lang="ts">
-  //
-  import { ref, reactive, computed, watch, toRefs } from "vue";
+  import {
+    ref,
+    reactive,
+    computed,
+    watch,
+    toRefs,
+    onMounted,
+    onBeforeMount,
+    onUpdated,
+  } from "vue";
 
   //オブジェクトそのものは定数、値は再代入可能
   //単一の値のリアクティブ化

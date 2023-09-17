@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import HelloWorld from "./components/HelloWorld.vue";
   import Payment from "./components/Payment.vue";
+  import Tweet from "./components/Tweet.vue";
 
   const buy = (itemName: string) => {
     alert("Are you sure to buy " + itemName + "?");
@@ -19,6 +20,7 @@
   <HelloWorld msg="Vite + Vue" />
   <Payment />
   <button v-on:click="buy('test')">Buy</button>
+  <Tweet />
 </template>
 
 <style scoped>
