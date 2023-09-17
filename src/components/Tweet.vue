@@ -13,12 +13,13 @@
       id: Math.random(),
       description,
     };
+    //引数に渡した値を配列に入れる
     tweets.value.push(tweet);
   };
 
   const deleteTweet = (id: number) => {
     //一個一個のオブジェクトがtの値に渡ってtの値の中のidプロパティが
-    //受け取ったid引数と同じではないものを返す
+    //受け取ったid引数と同じではないものを返す(高階関数)
     tweets.value = tweets.value.filter((t) => t.id !== id);
   };
 </script>

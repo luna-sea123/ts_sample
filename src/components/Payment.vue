@@ -56,14 +56,42 @@
   //     priceLabel.value = price.value + "yen";
   //   }
   // });
+
+  const nameLengthLIMIT = 10;
+
+  //バリデーション判定
+  const ValidName = computed(() => {
+    if (item.name.length >= nameLengthLIMIT) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  const ValidPrice = computed(() => {
+    if (item.price < budget) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+
+  //colorの値を真偽値に合わせて代入する
+  const color = computed(() => {
+    return ValidName.value ? "white" : "red";
+  });
+
+  const color1 = computed(() => {
+    return ValidPrice.value ? "red" : "white";
+  });
 </script>
 
 <template>
   <div class="cotainer">
     <a v-bind:href="URL">test</a>
     <h1>Payment</h1>
-    <input v-model="item.name" />
-    <input v-model="item.price" />
+    <input class="input-name" v-model="item.name" />
+    <input class="input-price" v-model="item.price" />
     <!-- <input v-on:input="input" v-bind:value="item.name" />
           <input v-on:input="inputPrice" v-bind:value="item.price" /> -->
     <button v-on:click="clear">Clear</button>
@@ -71,7 +99,8 @@
     <div class="payment">
       <label>{{ item.name }}</label>
       <label>{{ priceLabel }}</label>
-      <button v-on:click="buy(item.name)">Buy</button>
+      <!-- disabled -->
+      <button v-on:click="buy(item.name)" :disabled="ValidPrice">Buy</button>
     </div>
   </div>
 </template>
@@ -97,6 +126,17 @@
     margin-bottom: 8px;
     margin-right: 8px;
   }
+
+  .input-name {
+    background-color: v-bind(color);
+    color: black;
+  }
+
+  .input-price {
+    background-color: v-bind(color1);
+    color: black;
+  }
+
   label {
     font-size: 20px;
     font-weight: bold;

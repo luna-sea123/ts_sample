@@ -13,12 +13,14 @@
   };
 
   //親コンポーネント側で定義されている変数を子コンポーネントで受け取る
-  //値を加えることなく単純に表示するだけ
+  //値を加えることなく単純に表示するだけに留める
   defineProps<Props>();
 
   const emit = defineEmits(["delete-tweet"]);
   const deleteTweet = (id: number) => {
-    emit("delete-tweet", id);
+    if (confirm("delete tweet ?")) {
+      emit("delete-tweet", id);
+    }
   };
 </script>
 
@@ -34,25 +36,23 @@
     list-style: none;
     margin-bottom: 12px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
     justify-content: space-between;
-    background-color: aqua;
+    background-color: rgb(114, 204, 204);
     padding: 8px 20px;
     width: 300px;
   }
 
   .delete-button {
-    color: red;
+    color: black;
     font-weight: bold;
-    background-color: pink;
-    border-radius: 2px;
+    background-color: rgb(202, 67, 67);
+    border-radius: 4px;
     border: none;
-    width: 60px;
-    height: 22px;
   }
 
   .delete-button:hover {
-    background-color: aliceblue;
+    background-color: rgb(241, 140, 136);
   }
 </style>
