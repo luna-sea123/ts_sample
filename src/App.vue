@@ -2,6 +2,7 @@
   import HelloWorld from "./components/HelloWorld.vue";
   import Payment from "./components/Payment.vue";
   import Tweet from "./components/Tweet.vue";
+  import CardList from "./components/CardList.vue";
 
   const buy = (itemName: string) => {
     alert("Are you sure to buy " + itemName + "?");
@@ -21,9 +22,19 @@
   <Payment />
   <button v-on:click="buy('test')">Buy</button>
   <Tweet />
+
+  <CardList></CardList>
 </template>
 
 <style scoped>
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
   .logo {
     height: 6em;
     padding: 1.5em;
