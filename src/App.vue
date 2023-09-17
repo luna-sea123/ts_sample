@@ -2,11 +2,28 @@
   import HelloWorld from "./components/HelloWorld.vue";
   import Payment from "./components/Payment.vue";
   import Tweet from "./components/Tweet.vue";
+  import { ref, computed } from "vue";
   import CardList from "./components/CardList.vue";
+  import SecondCardList from "./components/SecondCardList.vue";
 
   const buy = (itemName: string) => {
     alert("Are you sure to buy " + itemName + "?");
   };
+
+  const activeTag = ref(1);
+  // const isFirstTab = ref(true);
+  const updateTab = (num: number) => {
+    activeTag.value = num;
+  };
+
+  const currentComponent = computed(() => {
+    switch (activeTag.value) {
+      case 1:
+        return CardList;
+      case 2:
+        return SecondCardList;
+    }
+  });
 </script>
 
 <template>
@@ -18,12 +35,20 @@
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
+
   <HelloWorld msg="Vite + Vue" />
   <Payment />
   <button v-on:click="buy('test')">Buy</button>
   <Tweet />
 
-  <CardList></CardList>
+  <div class="tab-changer">
+    <button @click="updateTab(1)">Tab 1</button>
+    <button @click="updateTab(2)">Tab 2</button>
+  </div>
+
+  <div class="tab-contents">
+    <component :is="currentComponent"></component>
+  </div>
 </template>
 
 <style scoped>
@@ -46,5 +71,9 @@
   }
   .logo.vue:hover {
     filter: drop-shadow(0 0 2em #42b883aa);
+  }
+
+  .tab-contents {
+    margin-top: 20px;
   }
 </style>

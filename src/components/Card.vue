@@ -41,7 +41,7 @@
 
   .footer {
     display: flex;
-    height: 60px;
+    height: 30px;
     width: 100%;
     background-color: blue;
     border-radius: 0px 0px 8px 8px;
