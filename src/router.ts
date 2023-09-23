@@ -1,6 +1,6 @@
-import Vue from "vue";
-import * as VueRouter from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
+// import Vue from "vue";
+// import * as VueRouter from "vue-router";
 
 import menu from "./views/menu.vue";
 import Tweet from "./components/Tweet.vue";
@@ -8,7 +8,7 @@ import Payment from "./components/Payment.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/menu",
     name: "menu",
     components: menu,
   },

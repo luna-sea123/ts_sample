@@ -12,6 +12,7 @@
   <TodoList />
 
   <router-link to="/Tweet">Tweet</router-link>
+  <router-link to="/Payment">Payment</router-link>
 </template>
 
 <style scoped>

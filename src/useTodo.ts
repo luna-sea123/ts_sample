@@ -33,5 +33,8 @@ export const todos = (() => {
   return { todos, addTodo };
 })();
 
+//todosの型がTodosTypeという型情報で使い回す事ができる
 type TodosType = typeof todos;
-const todoKey: InjectionKey<TodosType> = Symbol("useTodos");
+
+//
+export const todoKey: InjectionKey<TodosType> = Symbol("useTodos");

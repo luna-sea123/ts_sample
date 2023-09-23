@@ -1,14 +1,17 @@
 <script setup lang="ts">
   import { inject } from "vue";
+  import { todoKey } from "../useTodo";
 
-  // const todos = inject("todos");
-  // const _addTodo = inject("addTodo");
+  const state = inject(todoKey);
+  if (!state) {
+    throw new Error("state is undifined");
+  }
 
-  const { todos, addTodo: _addTodo } = inject("todos");
+  const { todos, addTodo } = state;
 
-  const addTodo = (title: string) => {
-    _addTodo(title);
-  };
+  // const addTodo = (title: string) => {
+  //   _addTodo(title);
+  // };
 </script>
 
 <template>
