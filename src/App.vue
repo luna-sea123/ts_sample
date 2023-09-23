@@ -5,6 +5,7 @@
   import { ref, computed } from "vue";
   import CardList from "./components/CardList.vue";
   import SecondCardList from "./components/SecondCardList.vue";
+  import TodoList from "./components/TodoList.vue";
 
   const buy = (itemName: string) => {
     alert("Are you sure to buy " + itemName + "?");
@@ -49,6 +50,8 @@
   <div class="tab-contents">
     <component :is="currentComponent"></component>
   </div>
+
+  <TodoList />
 </template>
 
 <style scoped>
