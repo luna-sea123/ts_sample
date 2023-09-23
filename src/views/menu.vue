@@ -10,6 +10,8 @@
 
 <template>
   <TodoList />
+
+  <router-link to="/Tweet">Tweet</router-link>
 </template>
 
 <style scoped>

@@ -32,3 +32,6 @@ export const todos = (() => {
   };
   return { todos, addTodo };
 })();
+
+type TodosType = typeof todos;
+const todoKey: InjectionKey<TodosType> = Symbol("useTodos");
