@@ -1,35 +1,35 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import menu from "../views/menu.vue";
-import Tweet from "../components/Tweet.vue";
-import Payment from "../components/Payment.vue";
+// import { createRouter, createWebHashHistory } from "vue-router";
+// import Vue from "vue";
+// import Router from "vue-router";
 
-const routes = [
-  {
-    path: "/",
-    name: "menu",
-    components: menu,
-  },
-  {
-    path: "/Tweer",
-    name: "Tweet",
-    comoponents: Tweet,
-  },
-  {
-    path: "/Card",
-    name: "Card",
-    components: Card,
-  },
-  {
-    path: "/Payment",
-    name: "Payment",
-    components: Payment,
-  },
-];
+// import menu from "../views/menu.vue";
+// import Tweet from "../components/Tweet.vue";
+// import Payment from "../components/Payment.vue";
 
-const router = createRouter({
-  history: createWebHashHistory(),
+// Vue.use(Router);
 
-  routes,
-});
-
-export default router;
+// export default new Router({
+//   mode: "history",
+//   routes: [
+//     {
+//       path: "/",
+//       name: "menu",
+//       components: menu,
+//     },
+//     {
+//       path: "/Tweer",
+//       name: "Tweet",
+//       comoponents: Tweet,
+//     },
+//     {
+//       path: "/Card",
+//       name: "Card",
+//       components: Card,
+//     },
+//     {
+//       path: "/Payment",
+//       name: "Payment",
+//       components: Payment,
+//     },
+//   ],
+// });

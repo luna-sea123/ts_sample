@@ -5,12 +5,19 @@
 
   //v-forcus 付与されたフォームに対してフォーカスを自動で当てる
   const vFocus = {
-    mounted: (el: HTMLElement) => {
+    mounted: (el: HTMLElement, binding: DirectiveBinding) => {
       el.focus();
+
+      //v-focus.aleartモディファイア
+      if (binding.modifiers.alert) {
+        el.style.backgroundColor = "pink";
+      }
     },
   };
 
-  const onSubmit = () => {};
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+  };
 </script>
 
 <template>
@@ -22,7 +29,7 @@
         id="user-name"
         name="user-name"
         type="text"
-        v-focus
+        v-focus.alert
       />
     </div>
     <div class="form-control">
@@ -68,7 +75,7 @@
       </div>
     </div>
     <div>
-      <button @click="onSubmit">Save Data</button>
+      <button @click.prevent="onSubmit">Save Data</button>
     </div>
   </form>
 </template>
