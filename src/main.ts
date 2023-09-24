@@ -5,5 +5,6 @@ import router from "./router";
 import menu from "./views/menu.vue";
 import todo from "./views/todo.vue";
 import form from "./components/Form.vue";
+import form1 from "./components/Form1.vue";
 
-createApp(form).use(router).mount("#app");
+createApp(form1).use(router).mount("#app");

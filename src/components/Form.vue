@@ -1,7 +1,19 @@
 <script setup lang="ts">
-  import { ref } from "vue";
+  import { DirectiveBinding, ref, watch } from "vue";
+  import Rating from "./Rating.vue";
 
   const userName = ref<string>("");
+  const from = ref<string>("japan");
+
+  //ratingsに対してRatingの中のisActiveButtonがバインドされる
+  const ratings = ref<string>("");
+
+  const interest = ref([]);
+  watch(interest, () => {
+    console.log("interest", interest.value);
+  });
+
+  const radios = ref([]);
 
   //v-forcus 付与されたフォームに対してフォーカスを自動で当てる
   const vFocus = {
@@ -15,8 +27,15 @@
     },
   };
 
-  const onSubmit = (e: any) => {
-    e.preventDefault();
+  const onSubmit = (e: Event) => {
+    //e.preventDefault();
+    console.log("userName is", userName.value);
+    console.log("from is", from.value);
+    console.log("radio ", radios.value);
+
+    console.log("ratings...", ratings.value);
+
+    interest.value = [];
   };
 </script>
 
@@ -32,47 +51,92 @@
         v-focus.alert
       />
     </div>
+
     <div class="form-control">
       <label for="age">Your Age</label>
       <input id="age" name="age" type="number" />
     </div>
+
     <div class="form-control">
       <label for="from">Where Are you from?</label>
-      <select id="from" name="from">
+      <select id="from" name="from" v-model="from">
         <option value="japan">Japan</option>
         <option value="china">China</option>
         <option value="others">Others</option>
       </select>
     </div>
+
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-react" name="interest" type="checkbox" />
+        <input
+          id="interest-react"
+          name="interest"
+          type="checkbox"
+          value="React"
+          v-model="interest"
+        />
         <label for="interest-react">React.js</label>
       </div>
+
       <div>
-        <input id="interest-vue" name="interest" type="checkbox" />
+        <input
+          id="interest-vue"
+          name="interest"
+          type="checkbox"
+          value="Vue"
+          v-model="interest"
+        />
         <label for="interest-vue">Vue.js</label>
       </div>
+
       <div>
-        <input id="interest-angular" name="interest" type="checkbox" />
+        <input
+          id="interest-angular"
+          name="interest"
+          type="checkbox"
+          value="Angular"
+          v-model="interest"
+        />
         <label for="interest-angular">Angular.js</label>
       </div>
     </div>
+
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input
+          id="how-video"
+          name="how"
+          type="radio"
+          v-model="radios"
+          value=" Video"
+        />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-books" name="how" type="radio" />
+        <input
+          id="how-books"
+          name="how"
+          type="radio"
+          v-model="radios"
+          value="Books"
+        />
         <label for="how-books">Books</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input
+          id="how-other"
+          name="how"
+          type="radio"
+          v-model="radios"
+          value="Others"
+        />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div>
+      <Rating v-model="ratings" />
     </div>
     <div>
       <button @click.prevent="onSubmit">Save Data</button>
