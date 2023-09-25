@@ -12,13 +12,23 @@
   const interest = ref([]);
   const data = ref();
   const isLoading = ref<boolean>(false);
+  const err = ref();
 
   //非同期
   onMounted(async () => {
     isLoading.value = true;
-    data.value = await axios.get(
-      "https://vue-sample-284af-default-rtdb.firebaseio.com/surverys.json"
-    );
+    try {
+      const response = await axios.get(
+        "https://vue-sample-284af-default-rtdb.firebaseio.com/surverys.json"
+      );
+      if (response.status !== 200) {
+        throw new Error("サーバー側のエラー");
+      }
+
+      data.value = response;
+    } catch (e) {
+      err.value = e;
+    }
     isLoading.value = false;
   });
 
@@ -35,6 +45,7 @@
     //       name: userName.value,
     //       interest: interest.value,
     //     }),
+
     axios.post(
       "https://vue-sample-284af-default-rtdb.firebaseio.com/surverys.json",
       {
@@ -93,6 +104,7 @@
     </div>
     <div v-if="isLoading">Loading...</div>
     <div v-else>{{ data }}</div>
+    <div v-if="err">{{ err }}</div>
     <div>
       <button @click.prevent="onSubmit">Save Data</button>
     </div>
